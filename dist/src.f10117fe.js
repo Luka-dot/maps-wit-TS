@@ -123132,6 +123132,26 @@ function () {
     });
   }
 
+  CustomMap.prototype.addUserMarker = function (user) {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: user.location.lat,
+        lng: user.location.lng
+      }
+    });
+  };
+
+  CustomMap.prototype.addCompanyMarker = function (company) {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: company.location.lat,
+        lng: company.location.lng
+      }
+    });
+  };
+
   return CustomMap;
 }();
 
@@ -123154,7 +123174,11 @@ var company = new Company_1.Company();
 console.log(user);
 console.log(company); // CustomMap class created in order to limit access to google.maps properties see customMap.ts
 
-new customMap_1.CustomMap("map");
+var newMap = new customMap_1.CustomMap("map");
+var newUser = new User_1.User();
+var newCompany = new Company_1.Company();
+newMap.addUserMarker(newUser);
+newMap.addCompanyMarker(newCompany);
 },{"./User":"src/User.ts","./Company":"src/Company.ts","./customMap":"src/customMap.ts"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
