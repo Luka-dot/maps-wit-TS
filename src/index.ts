@@ -12,5 +12,5 @@ console.log(company);
 const newMap = new CustomMap("map");
 const newUser = new User();
 const newCompany = new Company();
-newMap.addUserMarker(newUser);
-newMap.addCompanyMarker(newCompany);
+newMap.addMarker(newUser);
+newMap.addMarker(newCompany);
