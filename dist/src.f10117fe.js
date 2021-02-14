@@ -123111,7 +123111,32 @@ function () {
 }();
 
 exports.Company = Company;
-},{"faker":"node_modules/faker/index.js"}],"src/index.ts":[function(require,module,exports) {
+},{"faker":"node_modules/faker/index.js"}],"src/customMap.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CustomMap = void 0;
+
+var CustomMap =
+/** @class */
+function () {
+  function CustomMap() {
+    this.googleMap = new google.maps.Map(document.getElementById("map"), {
+      zoom: 2,
+      center: {
+        lat: 0,
+        lng: 0
+      }
+    });
+  }
+
+  return CustomMap;
+}();
+
+exports.CustomMap = CustomMap;
+},{}],"src/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -123122,18 +123147,15 @@ var User_1 = require("./User");
 
 var Company_1 = require("./Company");
 
+var customMap_1 = require("./customMap");
+
 var user = new User_1.User();
 var company = new Company_1.Company();
 console.log(user);
-console.log(company);
-new google.maps.Map(document.getElementById("map"), {
-  zoom: 2,
-  center: {
-    lat: 0,
-    lng: 0
-  }
-});
-},{"./User":"src/User.ts","./Company":"src/Company.ts"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+console.log(company); // CustomMap class created in order to limit access to google.maps properties see customMap.ts
+
+new customMap_1.CustomMap();
+},{"./User":"src/User.ts","./Company":"src/Company.ts","./customMap":"src/customMap.ts"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
