@@ -1,6 +1,7 @@
 // this interface will allow any other Class to be able pass in to addMarker
-// as long as it has location {} with lat and lng    This makes this scalable,
-interface Mappable {
+// as long as it has location {} with lat and lng and markerContent()    This makes this scalable,
+// exporting mappable to implement for User and Company classes. This improve error message with TS.
+export interface Mappable {
     location: {
         lat: number,
         lng: number

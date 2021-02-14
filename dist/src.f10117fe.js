@@ -123061,7 +123061,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.User = void 0;
 
-var faker_1 = __importDefault(require("faker"));
+var faker_1 = __importDefault(require("faker")); // implemants Mappable ensures all instances of User sattisfies all the properties of mappable interface.
+// this will give error id location or markerContent() is missing for any User instance.
+// implement is optional. It helps ensure this class is compatable with Mappable interface
+
 
 var User =
 /** @class */
@@ -123075,7 +123078,7 @@ function () {
   }
 
   User.prototype.markerContent = function () {
-    return "User name is: " + this.name;
+    return "\n            <h1>User name is: " + this.name + "</h1>\n        ";
   };
 
   return User;
@@ -123097,7 +123100,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Company = void 0;
 
-var faker_1 = __importDefault(require("faker"));
+var faker_1 = __importDefault(require("faker")); // implemants Mappable ensures all instances of Company sattisfies all the properties of mappable interface.
+// this will give error id location or markerContent() is missing for any Company instance.
+// implement is optional. It helps ensure this class is compatable with Mappable interface
+
 
 var Company =
 /** @class */
@@ -123112,7 +123118,7 @@ function () {
   }
 
   Company.prototype.markerContent = function () {
-    return "\n            Business name: " + this.companyName + "\n            Catchpharase: " + this.catchPhrase + "\n        ";
+    return "\n            <div>\n                <h1>Business name: " + this.companyName + "</h1>\n                <h2>Catchpharase: " + this.catchPhrase + "</h2>\n            </div>\n            ";
   };
 
   return Company;
