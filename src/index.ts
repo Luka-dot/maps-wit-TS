@@ -9,4 +9,4 @@ console.log(user);
 console.log(company);
 
 // CustomMap class created in order to limit access to google.maps properties see customMap.ts
-new CustomMap();
+new CustomMap("map");

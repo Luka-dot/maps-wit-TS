@@ -123122,8 +123122,8 @@ exports.CustomMap = void 0;
 var CustomMap =
 /** @class */
 function () {
-  function CustomMap() {
-    this.googleMap = new google.maps.Map(document.getElementById("map"), {
+  function CustomMap(divId) {
+    this.googleMap = new google.maps.Map(document.getElementById(divId), {
       zoom: 2,
       center: {
         lat: 0,
@@ -123154,7 +123154,7 @@ var company = new Company_1.Company();
 console.log(user);
 console.log(company); // CustomMap class created in order to limit access to google.maps properties see customMap.ts
 
-new customMap_1.CustomMap();
+new customMap_1.CustomMap("map");
 },{"./User":"src/User.ts","./Company":"src/Company.ts","./customMap":"src/customMap.ts"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
