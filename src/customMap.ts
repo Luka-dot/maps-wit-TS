@@ -1,13 +1,11 @@
-import { User } from './User';
-import { Company } from './Company';
-
 // this interface will allow any other Class to be able pass in to addMarker
 // as long as it has location {} with lat and lng    This makes this scalable,
 interface Mappable {
     location: {
         lat: number,
         lng: number
-    }
+    },
+    markerContent():string;      // requiring for markerContent() to be present to be consider mappable. 
 }
 
 export class CustomMap {
@@ -23,25 +21,23 @@ export class CustomMap {
                 lng: 0
             }
         });
-    }
+    };
 
     addMarker(mappable: Mappable): void {
-        new google.maps.Marker({
+        const marker =new google.maps.Marker({
             map: this.googleMap,
             position: {
                 lat: mappable.location.lat,
                 lng: mappable.location.lng
             }
-        })
-    }
+        });
 
-    // addCompanyMarker(company: Company): void {
-    //     new google.maps.Marker({
-    //         map: this.googleMap,
-    //         position: {
-    //             lat: company.location.lat,
-    //             lng: company.location.lng
-    //         }
-    //     })
-    // }
+        marker.addListener('click', () => {
+            const infoWindow = new google.maps.InfoWindow({
+                content: mappable.markerContent();
+            });
+
+            infoWindow.open(this.googleMap, marker);
+        });
+    }
 }

@@ -123074,6 +123074,10 @@ function () {
     };
   }
 
+  User.prototype.markerContent = function () {
+    return "User name is: " + this.name;
+  };
+
   return User;
 }();
 
@@ -123107,6 +123111,10 @@ function () {
     };
   }
 
+  Company.prototype.markerContent = function () {
+    return "\n            Business name: " + this.companyName + "\n            Catchpharase: " + this.catchPhrase + "\n        ";
+  };
+
   return Company;
 }();
 
@@ -123132,13 +123140,23 @@ function () {
     });
   }
 
+  ;
+
   CustomMap.prototype.addMarker = function (mappable) {
-    new google.maps.Marker({
+    var _this = this;
+
+    var marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
+    });
+    marker.addListener('click', function () {
+      var infoWindow = new google.maps.InfoWindow({
+        content: mappable.markerContent()
+      });
+      infoWindow.open(_this.googleMap, marker);
     });
   };
 
@@ -123165,10 +123183,8 @@ console.log(user);
 console.log(company); // CustomMap class created in order to limit access to google.maps properties see customMap.ts
 
 var newMap = new customMap_1.CustomMap("map");
-var newUser = new User_1.User();
-var newCompany = new Company_1.Company();
-newMap.addMarker(newUser);
-newMap.addMarker(newCompany);
+newMap.addMarker(user);
+newMap.addMarker(company);
 },{"./User":"src/User.ts","./Company":"src/Company.ts","./customMap":"src/customMap.ts"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -123197,7 +123213,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64750" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58290" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
